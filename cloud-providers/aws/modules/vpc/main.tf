@@ -114,7 +114,9 @@ resource "aws_route_table" "private" {
     for_each = var.enable_nat_gateway ? [1] : []
     content {
       cidr_block     = "0.0.0.0/0"
-      nat_gateway_id = aws_nat_gateway.this[count.index].id
+      # Round-robin across available NAT Gateways to handle cases where the
+      # number of private subnets exceeds the number of public subnets / NAT GWs.
+      nat_gateway_id = aws_nat_gateway.this[count.index % length(aws_nat_gateway.this)].id
     }
   }
 

@@ -1,0 +1,72 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: aws-terraform-modules
+  title: AWS Terraform Modules
+  description: >
+    Reusable Terraform modules for AWS infrastructure provisioning,
+    organized by environment (DEV, UAT, PROD).
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: valdecimartins1981/devopspro
+  tags:
+    - terraform
+    - aws
+    - infrastructure
+    - iac
+  links:
+    - url: https://github.com/valdecimartins1981/devopspro/tree/main/cloud-providers/aws
+      title: Source Code
+      icon: github
+spec:
+  type: infrastructure
+  lifecycle: production
+  owner: platform-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: aws-dev-environment
+  title: AWS DEV Environment
+  description: AWS DEV infrastructure stack (VPC, EC2, RDS, S3).
+  tags:
+    - terraform
+    - aws
+    - dev
+spec:
+  type: cloud-environment
+  owner: platform-team
+  dependsOn:
+    - component:aws-terraform-modules
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: aws-uat-environment
+  title: AWS UAT Environment
+  description: AWS UAT infrastructure stack (VPC, EC2, RDS, S3).
+  tags:
+    - terraform
+    - aws
+    - uat
+spec:
+  type: cloud-environment
+  owner: platform-team
+  dependsOn:
+    - component:aws-terraform-modules
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: aws-prod-environment
+  title: AWS PROD Environment
+  description: AWS PROD infrastructure stack (VPC, EKS, RDS, S3).
+  tags:
+    - terraform
+    - aws
+    - prod
+spec:
+  type: cloud-environment
+  owner: platform-team
+  dependsOn:
+    - component:aws-terraform-modules

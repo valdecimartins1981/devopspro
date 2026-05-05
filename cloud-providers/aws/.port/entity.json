@@ -1,0 +1,17 @@
+{
+  "identifier": "aws-terraform-modules",
+  "title": "AWS Terraform Modules",
+  "description": "Reusable Terraform modules for AWS infrastructure (VPC, EC2, S3, RDS, EKS, IAM, Security Group), organized by environment: DEV, UAT, PROD.",
+  "blueprint": "infrastructure",
+  "properties": {
+    "provider": "aws",
+    "language": "terraform",
+    "environments": ["dev", "uat", "prod"],
+    "modules": ["vpc", "ec2", "s3", "rds", "eks", "iam", "security-group"],
+    "repoUrl": "https://github.com/valdecimartins1981/devopspro",
+    "path": "cloud-providers/aws"
+  },
+  "relations": {
+    "ownedBy": "platform-team"
+  }
+}

@@ -1,0 +1,9 @@
+subscription_id     = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  # <- seu subscription ID
+location            = "eastus"
+resource_group_name = "rg-aro-estudos"
+cluster_name        = "aro-estudos"
+domain              = "aroestudos"
+worker_vm_size      = "Standard_D4s_v3"
+worker_count        = 3
+master_vm_size      = "Standard_D8s_v3"
+pull_secret         = ""   # opcional - obtido em https://console.redhat.com/openshift/install/pull-secret
